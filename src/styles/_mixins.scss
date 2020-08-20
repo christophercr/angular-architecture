@@ -1,0 +1,147 @@
+@mixin font-face(
+  $tfname,
+  $paths: null,
+  $weights: null,
+  $styles: null,
+  $exts: eot woff2 woff ttf svg
+) {
+  $extmods: (
+    eot: "?",
+    svg: "#" + str-replace($tfname, " ", "_")
+  );
+
+  $formats: (
+    otf: "opentype",
+    ttf: "truetype"
+  );
+
+  @for $i from 1 through length($paths) {
+    $src: null;
+    @font-face {
+      font-family: quote($tfname);
+      font-weight: nth($weights, $i);
+      font-style: nth($styles, $i);
+      @each $ext in $exts {
+        $extmod: if(
+            map-has-key($extmods, $ext),
+            $ext + map-get($extmods, $ext),
+            $ext
+        );
+        $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+        $src: append(
+            $src,
+            url(quote(nth($paths, $i) + "." + $extmod)) format(quote($format)),
+            comma
+        );
+      }
+      src: $src;
+    }
+  }
+}
+
+@mixin breakpoint($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}
+
+@mixin capitalize() {
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}
+
+@mixin btn-colors($stylename, $style) {
+  $color: map-get($style, color);
+  $bg: map-get($style, bg);
+  $hoverbg: map-get($style, hoverbg);
+  color: should-add-default($color, $stylename, color);
+  color: $color;
+  background: should-add-default($bg, $stylename, bg);
+  background: $bg;
+  &:hover,
+  &:active {
+    background: should-add-default($hoverbg, $stylename, hoverbg);
+    background: $hoverbg;
+  }
+}
+
+@mixin themify($theme-colors: $theme-colors, $default-colors: $default-colors) {
+  $primary: default-color(primary) !global;
+  $primary-rgb: default-color(primary) !global;
+  $secondary: default-color(secondary) !global;
+  $secondary-rgb: default-color(secondary) !global;
+
+  @content;
+
+  $primary: theme-color(primary) !global;
+  $primary-rgb: theme-color(primary-rgb) !global;
+  $secondary: theme-color(secondary) !global;
+  $secondary-rgb: theme-color(secondary-rgb) !global;
+
+  @content;
+
+  $primary: null !global;
+  $primary-rgb: null !global;
+  $secondary: null !global;
+  $secondary-rgb: null !global;
+}
+
+@function should-add-default($color, $stylename, $defaultprop) {
+  @if str-index(#{$color}, "--") {
+    @return map-get(map-get($btn-default-type, $stylename), $defaultprop);
+  }
+  @return null;
+}
+
+@function default-color($color) {
+  @return map-get($default-colors, $color);
+}
+
+@function theme-color($color) {
+  @return map-get($theme-colors, $color);
+}
+
+@function readonly($name) {
+  @return mix(map-get($colors, $name), color("transparent"), $disabled-percent);
+}
+
+@function color($name) {
+  @return map-get($colors, $name);
+}
+
+@function size($name) {
+  @return map-get($sizes, $name);
+}
+
+@function get-btn-style($type, $style, $prop) {
+  @return map-get(map-get(map-get($btn-types, $type), $style), $prop);
+}
+
+@function get-elements($elements, $list) {
+  $existing-elements: ();
+  @each $element in $elements {
+    @if map-has-key($list, $element) {
+      $existing-elements: append($existing-elements, $element);
+    }
+  }
+  @return $existing-elements;
+}
+
+@function get-classname($typename, $toavoid) {
+  @if $typename != $toavoid {
+    @return ".#{$typename}";
+  } @else {
+    @return "";
+  }
+}
+
+@function rem($size) {
+  @return $size * 1rem;
+}
+
+@function px($size) {
+  @return $size * 10px;
+}

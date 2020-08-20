@@ -1,0 +1,197 @@
+$width-closed: 70px;
+$width-open: 210px;
+$dropdown-width: 230px;
+$link-height: 48px;
+$link-spacing: ($width-closed - $tile-size)/2;
+
+.sidebar {
+  max-width: 100%;
+  background: color("light");
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 50;
+  transition: transform $easing $time;
+
+  &.closed .hide-closed,
+  &.open .hide-open {
+    width: 0;
+    padding: 0;
+    overflow: hidden;
+    opacity: 0;
+    flex: none;
+  }
+
+  &.closed .text {
+    height: 0;
+  }
+
+  &_main {
+    transition: width $easing $time, min-width $easing $time;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    @include themify {
+      background: $secondary;
+    }
+  }
+
+  &_acronym,
+  &_name {
+    font-family: "Satisfy", sans-serif;
+    color: color("light");
+    margin-top: 10px;
+  }
+
+  &_acronym {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &_cog {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    padding: 4%;
+    width: 30%;
+    height: 30%;
+    @include themify {
+      background: $secondary;
+    }
+
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    path {
+      fill: color("light-opaque");
+      transition: fill $easing $time;
+    }
+
+    &:before {
+      content: "";
+      @extend .cover;
+      transition: background-color $easing $time;
+    }
+  }
+
+  &_name {
+    margin-bottom: $spacing/6;
+    padding: 0 $spacing * 0.75;
+    width: $width-open;
+  }
+
+  &_title {
+    width: $width-open;
+    padding: 0 $spacing/4;
+  }
+
+  &_list {
+    width: 100%;
+    margin-bottom: $spacing;
+
+    &:last-child {
+      margin-bottom: 10px;
+    }
+  }
+
+  &_link {
+    height: $link-height;
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding-left: $link-spacing;
+    color: color("light-opaque");
+
+    &:before {
+      content: "";
+      width: $tile-size;
+      height: $tile-size;
+      position: absolute;
+      left: $link-spacing;
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: 18px;
+      z-index: -1;
+      transition: $transition;
+    }
+
+    .closed & {
+      padding-left: 0;
+      justify-content: center;
+      max-width: $width-closed;
+
+      &:before {
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &.activedd,
+    .app:not(.mobile) &:not(.active):hover {
+      color: color("light");
+
+      &:before {
+        background: rgba(color("light"), 0.1);
+      }
+    }
+
+    &.active {
+      color: color("light");
+
+      &:before {
+        @include themify {
+          background: $primary;
+        }
+      }
+    }
+
+    .sidebar:not(.closed) &:before {
+      width: 100%;
+      left: 0;
+      border-radius: 0;
+    }
+
+    .dragging & {
+      pointer-events: none;
+    }
+
+    .icon {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-size: px(size(lg));
+      width: $tile-size;
+      height: $tile-size;
+      min-width: $tile-size;
+    }
+
+    .text {
+      padding-right: $spacing/2;
+      position: relative;
+      display: block;
+      flex: 1;
+      @extend .hide-closed;
+      @extend .t-ellipsis;
+    }
+  }
+
+  &_profile {
+    width: 100%;
+    padding: $spacing * 2 0 $spacing * 2;
+    text-align: center;
+    color: color("light");
+  }
+}

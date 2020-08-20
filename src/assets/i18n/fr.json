@@ -1,0 +1,107 @@
+{
+  "messages": {
+    "noFile": "Aucun fichier sélectionné",
+    "selectFile": "Sélectionner un fichier",
+    "switchLanguage": "Changer de langue",
+    "noResult": "Pas de résultat"
+  },
+  "errors": {
+    "unavailable": "Le serveur est indisponnible",
+    "notFound": "La page n'existe pas",
+    "back": {
+      "DEFAULT_ERROR": "Une erreur est survenue. Veuillez réessayer",
+      "OFFLINE": "Vous n'êtes pas connecté à internet",
+      "FORBIDDEN": "Cette action est interdite",
+      "NOT_FOUND": "La requête n'a pas pu aboutir",
+      "FILE_TOO_LARGE": "Le fichier chargé est trop gros",
+      "SERVICE_UNAVAILABLE": "Le serveur n'est pas disponnible",
+      "UNAUTHORIZED": "Cette action n'est pas autorisée",
+      "ERR_BAD_CREDENTIALS": "La connexion a échouée",
+      "ERR_USER_ALREADY_EXISTS": "L'adresse email existe déjà",
+      "ERR_EMAIL_NOT_CONFIRMED": "L'adresse email doit être confirmée",
+      "ERR_EMAIL_ALREADY_CONFIRMED": "L'adresse email a déjà été confirmée",
+      "ERR_SOME_FIELDS_ARE_INVALID_OR_MISSING": "Certains champs sont manquants ou invalides"
+    },
+    "form": {
+      "default": "Le champ n'est pas valide",
+      "required": "Ce champ est obligatoire",
+      "minLength": "La taille minimum est de {{width}} caractères",
+      "maxLength": "La taille maximum est de {width} caractères",
+      "mustMatch": "Les deux champs doivent correspondre",
+      "regex_email": "Adresse email invalide",
+      "regex_name": "Le champ contient des caractères non autorisés",
+      "regex_generic": "Le champ contient des caractères non autorisés",
+      "regex_password": "Au minimum 8 caractères composés d'au moins une majuscule, une minuscule, un chiffre et un caractère spécial",
+      "regex_phoneNumber": "Le numéro de téléphone n'est pas valide",
+      "extensionNotAllowed": "Le format de fichier n'est pas valide",
+      "fileToLarge": "Le fichier est trop volumineux"
+    }
+  },
+  "auth": {
+    "passwordEdition": "Edition du mot de passe",
+    "login": "Connexion",
+    "forgotPassword": "Mot de passe oublié",
+    "actions": {
+      "login": "Se connecter",
+      "register": "S'inscrire"
+    },
+    "registration": "Inscription",
+    "messages": {
+      "registered": "Inscription réussie",
+      "forgotPasswordSent": "Demande de réinitialisation du mot de passe envoyée",
+      "passwordEdited": "Edition du mot de passe réussie"
+    }
+  },
+  "actions": {
+    "edit": "Editer",
+    "send": "Envoyer",
+    "delete": "Supprimer",
+    "ok": "Ok",
+    "cancel": "Annuler",
+    "reset": "Réinitialiser",
+    "search": "Chercher"
+  },
+  "profile": {
+    "edition": "Edition du profil",
+    "messages": {
+      "editionSucceed": "Edition du profil réussie"
+    }
+  },
+  "users": {
+    "deleteUser": "Supprimer l'utilisateur",
+    "messages": {
+      "confirmDeleteUser": "Voulez-vous supprimer l'utiliateur?",
+      "userDeleted": "L'utilisateur a été supprimé",
+      "userBanned": "L'utilisateur a été désactivé",
+      "userUnbanned": "L'utilisateur a été réactivé"
+    },
+    "search": "Terme de recherche"
+  },
+  "menu": {
+    "users": "Utilisateurs",
+    "profile": "Profil",
+    "home": "Accueil",
+    "logout": "Déconnexion"
+  },
+  "user": {
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "email": "Courriel",
+    "role": "Role",
+    "status": "Statut",
+    "isEmailConfirmed": "Email confirmé",
+    "picture": "Photo de profil",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmation du mot de passe",
+    "newPassword": "Nouveau mot de passe",
+    "confirmNewPassword": "Confirmation du nouveau mot de passe",
+    "roleList": {
+      "2": "Utilisateur",
+      "7": "Admin"
+    },
+    "statusList": {
+      "0": "Actif",
+      "1": "Désactivé"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+$icon-y-margin: -($box-vertical-spacing + $border-width);
+$icon-y-small-margin: -($box-small-vertical-spacing + $border-width);
+
+.box {
+  min-height: $tile-size;
+  border: $border;
+  font-size: rem(size(rg));
+  border-radius: $radius;
+  padding: $box-vertical-spacing $spacing/2;
+  display: flex;
+  background: color("light");
+  transition: background $easing $time;
+
+  &-small {
+    min-height: $small-tile;
+    padding: $box-small-vertical-spacing $spacing/3;
+  }
+
+  &-mini {
+    min-height: $mini-tile;
+  }
+
+  &-noborder {
+    border-color: transparent;
+    background-color: transparent;
+    border-left-width: 0;
+    border-right-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  &-readonly {
+    border-color: transparent;
+    background-color: color(grey-lightest);
+  }
+
+  &_icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $tile-size;
+    transition: color $time $easing;
+    margin: #{($icon-y-margin)} 0 #{($icon-y-margin)};
+
+    &-before {
+      margin-left: #{- (($spacing/2) + $border-width)};
+    }
+
+    &-after {
+      margin-right: #{- (($spacing/2) + $border-width)};
+    }
+
+    &-small {
+      width: $small-tile;
+      margin: #{($icon-y-small-margin)} 0 #{($icon-y-small-margin)};
+
+      &-before {
+        margin-left: #{- (($spacing/3) + $border-width)};
+      }
+
+      &-after {
+        margin-right: #{- (($spacing/3) + $border-width)};
+      }
+    }
+  }
+}

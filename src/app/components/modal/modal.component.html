@@ -1,0 +1,42 @@
+<div class="modal"
+     (touchstart)="$event.stopPropagation()"
+     [class.hidden]="!(modal.show$ | async)"
+     [class.large]="modal?.params?.isLarge">
+  <div class="modal_container">
+    <div class="modal_overlay"
+         (click)="secondaryAction()">
+    </div>
+
+    <div class="modal_content flex vertical"
+         tabindex="0"
+         #contentRef
+         [style.paddingBottom]="modal.buttonsHeight + 'px'">
+      <div class="pt-half pt-sm px-half px-sm"
+           *ngIf="modal?.params?.title">
+        <p class="modal_title border-bottom t-xl pb-quarter"
+           [class.border-transparent]="!topBorder">
+          {{ modal?.params?.title | translate }}
+        </p>
+      </div>
+
+      <div class="scroll px-half px-sm"
+           (scroll)="topBorder = $event.target.scrollTop > 0"
+           #scrollRef>
+        <div class="pt-quarter">
+          <p *ngIf="modal?.params?.text"
+             class="t-dark-medium mb-half">
+            {{ modal?.params?.text | translate }}
+          </p>
+
+          <ng-template modalHost></ng-template>
+
+          <app-modal-buttons *ngIf="(modal.show$ | async) && !modal?.params?.hideButtons"
+                             [primaryButton]="modal?.params?.primaryButton"
+                             [secondaryButton]="modal?.params?.secondaryButton">
+          </app-modal-buttons>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

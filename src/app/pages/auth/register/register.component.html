@@ -1,0 +1,68 @@
+<div class="row center p">
+  <h1 class="mb col-12">{{ 'auth.registration' | translate }}</h1>
+
+  <form #form="ngForm"
+        (ngSubmit)="submit(form.form.value)"
+        [mustMatch]="['password', 'confirmPassword']"
+        novalidate
+        class="t-left col-12 col-6-sm col-4-md col-3-lg col-2-xl">
+
+    <app-input type="text"
+               name="firstName"
+               label="user.firstName"
+               placeholder="user.firstName"
+               icon="person_pin"
+               regex="name"
+               [required]="true">
+    </app-input>
+
+    <app-input type="text"
+               name="lastName"
+               label="user.lastName"
+               placeholder="user.lastName"
+               icon="person_pin"
+               regex="name"
+               [required]="true">
+    </app-input>
+
+    <app-input type="email"
+               name="email"
+               label="user.email"
+               placeholder="user.email"
+               icon="email"
+               [required]="true"
+               regex="email">
+    </app-input>
+
+    <app-input type="password"
+               name="password"
+               label="user.password"
+               placeholder="user.password"
+               icon="vpn_key"
+               [required]="true"
+               regex="password">
+    </app-input>
+
+    <app-input type="password"
+               name="confirmPassword"
+               label="user.confirmPassword"
+               placeholder="user.password"
+               icon="vpn_key"
+               [required]="true"
+               regex="password">
+    </app-input>
+
+    <button class="btn col-12 waiter"
+            type="submit"
+            [disabled]="form.invalid">
+      {{ 'auth.actions.register' | translate }}
+    </button>
+  </form>
+
+  <p class="pt col-12">
+    <a [routerLink]="['/auth/login']"
+       class="link">
+      {{ 'auth.login' | translate }}
+    </a>
+  </p>
+</div>

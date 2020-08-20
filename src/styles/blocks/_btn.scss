@@ -1,0 +1,122 @@
+%btn-small {
+  padding: 0 $spacing/3;
+  height: $small-tile;
+  min-height: $small-tile;
+  min-width: $small-tile;
+  font-size: rem(size(sm));
+
+  .icon {
+    font-size: px(size(md));
+  }
+}
+
+.btn {
+  font-weight: 500;
+  border-radius: $radius;
+  transition: $transition;
+  cursor: pointer;
+  text-align: center;
+  padding: $box-vertical-spacing $spacing/2;
+  height: $tile-size;
+  min-height: $tile-size;
+  min-width: $tile-size;
+  font-size: rem(size(rg));
+  vertical-align: bottom;
+  @each $typename, $type in $btn-types {
+    @each $stylename, $style in $type {
+      @if $typename == primary and $stylename == default {
+        @include btn-colors($stylename, $style);
+      } @else {
+        &#{get-classname($typename, primary)}#{get-classname($stylename, default)} {
+          @include btn-colors($stylename, $style);
+        }
+      }
+    }
+  }
+
+  &.mimic {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.small,
+  &.mini {
+    @extend %btn-small;
+  }
+
+  &.mini {
+    height: $mini-tile;
+    min-height: $mini-tile;
+    min-width: $mini-tile;
+  }
+
+  &.icononly {
+    padding: 0;
+
+    .icon {
+      margin: 0;
+      font-size: px(size(lg));
+    }
+
+    &.small,
+    &.mini {
+      .icon {
+        font-size: px(size(md));
+      }
+    }
+  }
+
+  &.iconleft .icon {
+    margin-left: 0;
+    margin-right: 0.1em;
+  }
+
+  .icon {
+    margin-left: 0.1em;
+    position: relative;
+    top: -1px;
+  }
+}
+
+.switch {
+  .btn {
+    flex: 1;
+    border-radius: 0;
+
+    &:first-child {
+      border-top-left-radius: $radius;
+      border-bottom-left-radius: $radius;
+    }
+
+    &:last-child {
+      border-top-right-radius: $radius;
+      border-bottom-right-radius: $radius;
+    }
+  }
+
+  &.vertical {
+    flex-direction: column;
+
+    .btn {
+      border-radius: 0;
+
+      &:first-child {
+        border-top-left-radius: $radius;
+        border-top-right-radius: $radius;
+      }
+
+      &:last-child {
+        border-bottom-left-radius: $radius;
+        border-bottom-right-radius: $radius;
+      }
+    }
+  }
+}
+
+.disabled,
+[disabled] {
+  opacity: $disabled-opacity;
+  pointer-events: none;
+  user-select: none;
+}

@@ -1,0 +1,17 @@
+<a *ngIf="item.link"
+   class="sidebar_link"
+   [routerLink]="item.link"
+   routerLinkActive="active"
+   [routerLinkActiveOptions]="{exact: item.link && item.link[0] === '/'}"
+   [title]="item?.name | translate"
+   (click)="item.action && item.action()">
+  <i class="icon">{{ item?.icon }}</i>
+  <span class="text">{{ item?.name | translate }}</span>
+</a>
+
+<a *ngIf="item.action"
+   class="sidebar_link"
+   (click)="item.action()">
+  <i class="icon">{{ item?.icon }}</i>
+  <span class="text">{{ item?.name | translate }}</span>
+</a>

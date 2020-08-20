@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+
+// packages
+@import "~ngx-toastr/toastr";
+
+// global
+@import "styles/theme";
+@import "styles/variables";
+@import "styles/fonts";
+@import "styles/normalize";
+
+// blocks
+@import "styles/blocks/loader";
+@import "styles/blocks/btn";
+@import "styles/blocks/input";
+@import "styles/blocks/table";
+@import "styles/blocks/header";
+@import "styles/blocks/resizer";
+@import "styles/blocks/modal";
+@import "styles/blocks/sidebar";
+@import "styles/blocks/menu";
+
+// plugins
+@import "styles/plugins/toastr";
+
+// helpers
+@import "styles/helpers/grid";
+@import "styles/helpers/icons";
+@import "styles/helpers/text";
+@import "styles/helpers/animations";
+@import "styles/helpers/spacing";
+@import "styles/helpers/layout";

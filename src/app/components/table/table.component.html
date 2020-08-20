@@ -1,0 +1,16 @@
+<div class="scroll-horizontal">
+  <table *ngIf="items?.length"
+         infiniteScroll
+         [infiniteScrollContainer]="scrollContainerSelector"
+         [infiniteScrollDisabled]="scrollDisabled"
+         [fromRoot]="true"
+         (scrolled)="loadMore()">
+
+    <ng-content></ng-content>
+
+  </table>
+
+  <span class="noresult">
+    {{ 'messages.noResult' | translate }}
+  </span>
+</div>

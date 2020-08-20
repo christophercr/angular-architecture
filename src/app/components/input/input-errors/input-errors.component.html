@@ -1,0 +1,8 @@
+<div *ngIf="input?.invalid
+      && input?.dirty
+      && input?.touched"
+     class="error t-error">
+  <ng-container *ngFor="let error of formatErrors(input?.errors)">
+    {{ error }}.
+  </ng-container>
+</div>

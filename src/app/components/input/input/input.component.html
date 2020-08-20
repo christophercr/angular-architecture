@@ -1,0 +1,56 @@
+<label class="input block">
+  <app-input-label [type]="type"
+                   [label]="label"
+                   [required]="required"
+                   [disabled]="disabled"
+                   [icon]="icon">
+  </app-input-label>
+
+  <input *ngIf="!['checkbox', 'textarea'].includes(type)"
+         [type]="type"
+         [name]="name"
+         [placeholder]="placeholder ? (placeholder | translate) : ''"
+         [required]="required"
+         [pattern]="pattern"
+         [minlength]="minlength"
+         [maxlength]="maxlength"
+         [disabled]="disabled"
+         [autocomplete]="autocomplete ? '' : 'new-' + name"
+         #input=ngModel
+         [ngModel]="model"
+         (ngModelChange)="changeModel($event)">
+
+  <!-- textarea -->
+  <textarea *ngIf="type === 'textarea'"
+            [name]="name"
+            [placeholder]="placeholder ? (placeholder | translate) : ''"
+            [required]="required"
+            [pattern]="pattern"
+            [minlength]="minlength"
+            [maxlength]="maxlength"
+            [disabled]="disabled"
+            #input="ngModel"
+            [ngModel]="model"
+            (ngModelChange)="changeModel($event)">
+</textarea>
+
+  <!-- checkbox -->
+  <div *ngIf="type === 'checkbox'">
+    <input [type]="type"
+           [name]="name"
+           [required]="required"
+           [disabled]="disabled"
+           #input="ngModel"
+           [ngModel]="model"
+           (ngModelChange)="changeModel($event)">
+
+    <span *ngIf="label">
+      {{ label | translate }}
+      {{ (required && !disabled) ? '*' : '' }}
+    </span>
+  </div>
+
+  <app-input-errors *ngIf="showErrors"
+                    [input]="input">
+  </app-input-errors>
+</label>

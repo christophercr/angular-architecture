@@ -1,0 +1,58 @@
+<label class="input block">
+  <app-input-label type="file"
+                   [label]="label"
+                   [required]="required"
+                   [disabled]="disabled"
+                   [icon]="icon">
+  </app-input-label>
+
+  <!-- hidden -->
+  <input type="file"
+         [name]="name"
+         [accept]="accept"
+         [required]="required"
+         [disabled]="disabled"
+         [multiple]="multiple"
+         #inputRef
+         #input=ngModel
+         [ngModel]="file"
+         (change)="changeModel($event)">
+
+  <button *ngIf="!multiple"
+          (click)="inputRef.click()"
+          [disabled]="disabled"
+          type="button"
+          class="file">
+    {{ model?.name || ('messages.noFile' | translate) }}
+    <i class="icon">attach_file</i>
+  </button>
+
+  <ng-container *ngIf="multiple">
+    <div class="t-italic t-dark">
+      <ng-container *ngIf="!model">{{ 'messages.noFile' | translate }}</ng-container>
+      <ng-container *ngFor="let file of model; let last = last">
+        {{ file?.name }}{{ last ? '' : ', '}}
+      </ng-container>
+    </div>
+
+    <button (click)="inputRef.click()"
+            [disabled]="disabled"
+            type="button"
+            class="file">
+      {{ 'messages.selectFile' | translate }}
+      <i class="icon">attach_file</i>
+    </button>
+  </ng-container>
+
+  <p *ngIf="tip"
+     class="t-label-small">
+    (
+    <ng-container *ngFor="let extension of extensions; let last = last">
+      .{{ extension }}{{ last ? '' : ', '}}</ng-container>
+    )
+  </p>
+
+  <app-input-errors *ngIf="showErrors"
+                    [input]="input">
+  </app-input-errors>
+</label>

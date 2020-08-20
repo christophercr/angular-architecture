@@ -1,0 +1,214 @@
+{
+  "extends": "tslint:recommended",
+  "rulesDirectory": [
+    "codelyzer",
+    "rxjs-tslint"
+  ],
+  "defaultSeverity": "warning",
+  "rules": {
+    /* --------- BEGIN CUSTOM RULES --------- */
+
+    // ----- FUNCTIONALITY
+    // Enforces braces for if/for/do/while statements.
+    "curly": [
+      true,
+      "ignore-same-line"
+    ],
+
+    // Requires a for ... in statement to be filtered with an if statement.
+    "forin": true,
+
+    // Requires === and !== in place of === and !=.
+    "triple-equals": true,
+
+    // Disallows unused expression statements.
+    "no-unused-expression": [
+      true,
+      "allow-fast-null-checks"
+    ],
+
+    // Disallows debugger statements.
+    "no-debugger": true,
+
+    // Disallows eval function invocations.
+    "no-eval": true,
+
+    // ----- STYLE
+    // Requires the specified tokens to be on the same line as the expression preceding them.
+    "one-line": [
+      true,
+      "check-open-brace",
+      "check-catch",
+      "check-finally",
+      "check-else",
+      "check-whitespace"
+    ],
+
+    // Checks variable names for various errors.
+    "variable-name": [
+      true,
+      "allow-leading-underscore"
+    ],
+
+    // Enforces PascalCased class and interface names. (MUST)
+    "class-name": true,
+
+    // Requires interface names to begin with a capital ‘I’ (SHOULD)
+    "interface-name": true,
+
+    // Enforces whitespace style conventions.
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-separator",
+      "check-type"
+    ],
+    // Disallow irregular whitespace within a file, including strings and comments.
+    "no-irregular-whitespace": true,
+
+    // Disallows trailing whitespace at the end of a line.
+    "no-trailing-whitespace": true,
+
+    // Require or disallow a space before function parenthesis.
+    "space-before-function-paren": false,
+
+    // Requires single or double quotes for string literals.
+    "quotemark": [
+      true,
+      "single",
+      "avoid-escape"
+    ],
+
+    // Requires that import statements be alphabetized and grouped.
+    "ordered-imports": [
+      true,
+      {
+        "import-sources-order": "lowercase-last",
+        "named-imports-order": "lowercase-last"
+      }
+    ],
+
+
+    // ----- MAINTENABILITY
+    // Requires or disallows trailing commas in array and object literals, destructuring assignments, function typings, named imports and exports and function parameters.
+    "trailing-comma": true,
+
+    // Enforces indentation with tabs or spaces
+    "indent": {
+      "options": ["spaces", 2]
+    },
+
+    // Ensures the file ends with a newline.
+    "eofline": true,
+
+    // Requires lines to be under a certain max length.
+    "max-line-length": [
+      true,
+      {
+        "limit": 140,
+        "ignore-pattern": "^import"
+      }
+    ],
+
+    // Requires files to remain under a certain number of lines
+    "max-file-line-count": [
+      true,
+      300
+    ],
+
+    // A file may not contain more than the specified number of classes
+    "max-classes-per-file": [
+      true,
+      12
+    ],
+
+    // Enforces a threshold of cyclomatic complexity.
+    "cyclomatic-complexity": [
+      true,
+      9
+    ],
+
+    /* --------- END CUSTOM RULES ---------- */
+    "no-string-throw": false,
+    "arrow-return-shorthand": true,
+    "callable-types": true,
+    "comment-format": [true, "check-space"],
+    "deprecation": true,
+    "import-blacklist": [
+      true,
+      "rxjs/Rx",
+      "ramda/es"
+    ],
+    "import-spacing": true,
+    "interface-over-type-literal": true,
+    "label-position": true,
+    "member-access": false,
+    "member-ordering": [
+      true,
+      {
+        "order": [
+          "static-field",
+          "instance-field",
+          "static-method",
+          "instance-method"
+        ]
+      }
+    ],
+    "no-arg": true,
+    "no-bitwise": true,
+    "no-console": [
+      true,
+      "log",
+      "debug",
+      "info",
+      "time",
+      "timeEnd",
+      "trace"
+    ],
+    "no-construct": true,
+    "no-duplicate-super": true,
+    "no-empty": false,
+    "no-empty-interface": true,
+    "no-misused-new": true,
+    "no-non-null-assertion": true,
+    "no-redundant-jsdoc": true,
+    "no-shadowed-variable": true,
+    "no-string-literal": false,
+    "no-string-throw": true,
+    "no-switch-case-fall-through": true,
+    "no-unnecessary-initializer": true,
+    "no-use-before-declare": false,
+    "no-var-keyword": true,
+    "object-literal-sort-keys": false,
+    "prefer-const": true,
+    "radix": true,
+    "semicolon": [
+      true,
+      "always"
+    ],
+    "typedef-whitespace": [
+      true,
+      {
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      }
+    ],
+    "unified-signatures": true,
+    "no-output-on-prefix": false,
+    "no-inputs-metadata-property": true,
+    "no-outputs-metadata-property": true,
+    "no-host-metadata-property": true,
+    "no-input-rename": true,
+    "no-output-rename": true,
+    "use-lifecycle-interface": true,
+    "use-pipe-transform-interface": true,
+    "component-class-suffix": false,
+    "directive-class-suffix": true,
+    "object-literal-key-quotes": [false, "as-needed"]
+  }
+}

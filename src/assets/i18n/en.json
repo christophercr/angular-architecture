@@ -1,0 +1,107 @@
+{
+  "messages": {
+    "noFile": "No file selected",
+    "selectFile": "Select a file",
+    "switchLanguage": "Switch language",
+    "noResult": "No result"
+  },
+  "errors": {
+    "unavailable": "Server is unavailable",
+    "notFound": "Page not found",
+    "back": {
+      "DEFAULT_ERROR": "There is something wrong. Please try again",
+      "OFFLINE": "You are not connected to the internet",
+      "FORBIDDEN": "This action is forbidden",
+      "NOT_FOUND": "The query did not succeed",
+      "FILE_TOO_LARGE": "The loaded file is too large",
+      "SERVICE_UNAVAILABLE": "Server is unaivalable",
+      "UNAUTHORIZED": "This action is not authorized",
+      "ERR_BAD_CREDENTIALS": "Connection failed",
+      "ERR_USER_ALREADY_EXISTS": "Email address already exists",
+      "ERR_EMAIL_NOT_CONFIRMED": "The email address must be confirmed",
+      "ERR_EMAIL_ALREADY_CONFIRMED": "The email address has already been confirmed",
+      "ERR_SOME_FIELDS_ARE_INVALID_OR_MISSING": "Some fields are invalid or missing"
+    },
+    "form": {
+      "default": "The field is not correct",
+      "required": "'This field is mandatory",
+      "minLength": "The minimum width length is {width} characters",
+      "maxLength": "The maximum width length is {width} characters",
+      "mustMatch": "The two fields must match",
+      "regex_email": "The email adress is not correct",
+      "regex_name": "The field contains unauthorized characters",
+      "regex_generic": "The field contains unauthorized characters",
+      "regex_password": "A minimum of 8 characters, composed of at least one upper case, one lower case, one figure and one special character",
+      "regex_phoneNumber": "The phone number is not correct",
+      "extensionNotAllowed": "The file format is not valid",
+      "fileToLarge": "The file is too large"
+    }
+  },
+  "auth": {
+    "passwordEdition": "Edit password",
+    "login": "Login",
+    "forgotPassword": "Forgotten password",
+    "actions": {
+      "login": "Login",
+      "register": "Register"
+    },
+    "registration": "Registration",
+    "messages": {
+      "registered": "Successful registration",
+      "forgotPasswordSent": "Password reset request sent",
+      "passwordEdited": "Password editing successful"
+    }
+  },
+  "actions": {
+    "edit": "Edit",
+    "send": "Send",
+    "delete": "Delete",
+    "ok": "Ok",
+    "cancel": "Cancel",
+    "reset": "Reset",
+    "search": "Seach"
+  },
+  "profile": {
+    "edition": "Edit profile",
+    "messages": {
+      "editionSucceed": "Successful update profile"
+    }
+  },
+  "users": {
+    "deleteUser": "Delete user",
+    "messages": {
+      "confirmDeleteUser": "Do you want to delete the user?",
+      "userDeleted": "The user has been deleted",
+      "userBanned": "User has been deactivated",
+      "userUnbanned": "User has been reactivated"
+    },
+    "search": "Search term"
+  },
+  "menu": {
+    "users": "Users",
+    "profile": "Profile",
+    "home": "Home",
+    "logout": "Logout"
+  },
+  "user": {
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "role": "Role",
+    "status": "Status",
+    "isEmailConfirmed": "Email confirmed",
+    "picture": "Profile picture",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "newPassword": "New password",
+    "confirmNewPassword": "Confirm new password",
+    "roleList": {
+      "2": "User",
+      "7": "Admin"
+    },
+    "statusList": {
+      "0": "Active",
+      "1": "Disabled"
+    }
+  }
+}

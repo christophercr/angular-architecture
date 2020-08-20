@@ -1,0 +1,41 @@
+<div class="app"
+     [class.mobile]="sidebar.mobileMode"
+     #elRef>
+
+  <app-loader></app-loader>
+  <app-modal></app-modal>
+  <app-unavailable *ngIf="errorsHandler?.isUnavailable"></app-unavailable>
+
+  <div *ngIf="!errorsHandler?.isUnavailable">
+    <div *ngIf="sidebar.params as params"
+         class="app_main draggable cover"
+         [ngClass]="{'notransition': sidebar.noTransition, 'blanket': params.push > 0}"
+         [ngStyle]="
+        !sidebar.mobileMode
+        && {
+          paddingLeft: params.resize + 'px',
+          left: params.push + 'px'
+        }
+      ">
+      <header class="header">
+        <h1 class="header_title"
+            [class.ghost]="sidebar.sideMobileOpen">
+          <a routerLink="/"
+             class="link nodeco nohover t-light">
+            {{ appName }}
+          </a>
+        </h1>
+      </header>
+
+      <router-outlet #o="outlet"
+                     class="hide">
+      </router-outlet>
+    </div>
+
+    <app-menu *ngIf="session.isConnected()"
+              class="block relative">
+    </app-menu>
+  </div>
+</div>
+
+<span class="version">{{ displayEnv() }}</span>

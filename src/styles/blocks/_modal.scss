@@ -1,0 +1,71 @@
+.modal {
+  z-index: 200;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  &.hidden {
+    @extend .ghost;
+  }
+
+  &_heading {
+    margin-top: -$spacing/4;
+  }
+
+  &_container {
+    position: absolute;
+    padding: $spacing;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &_overlay {
+    background-color: color("dark-medium");
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    transform: scaleZ(1);
+    transition: opacity $easing $time;
+
+    .hidden & {
+      opacity: 0;
+    }
+  }
+
+  &_content {
+    background-color: color("light");
+    border: $border-width solid color("light");
+    border-radius: $radius;
+    width: 100%;
+    position: relative;
+    max-width: 600px;
+    max-height: 100%;
+    padding-bottom: $tile-size + $spacing + $border-width;
+    outline: none;
+
+    .modal:not(.hidden) & {
+      animation: slideInBottom $easing $time;
+    }
+
+    .large & {
+      max-width: 900px;
+    }
+  }
+
+  &_buttons {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}

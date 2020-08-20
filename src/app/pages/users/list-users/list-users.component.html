@@ -1,0 +1,74 @@
+<div class="scrollContainer"
+     #scrollContainer>
+  <div class="row p">
+    <h1 class="center mb col-12">{{ 'menu.users' | translate }}</h1>
+
+    <app-search-users (load)="loadUsers($event)"
+                      class="col-12">
+    </app-search-users>
+
+    <app-table (load)="loadUsers($event)"
+               [items]="users"
+               [scrollContainerRef]="scrollContainerRef">
+      <thead>
+      <tr>
+        <th table-col
+            field="firstName"
+            (orderTable)="sortUsers($event)">
+          {{ 'user.firstName' | translate }}
+        </th>
+        <th table-col
+            field="lastName"
+            (orderTable)="sortUsers($event)">
+          {{ 'user.lastName' | translate }}
+        </th>
+        <th table-col
+            field="email"
+            (orderTable)="sortUsers($event)">
+          {{ 'user.email' | translate }}
+        </th>
+        <th table-col
+            field="role"
+            (orderTable)="sortUsers($event)">
+          {{ 'user.role' | translate }}
+        </th>
+        <th table-col
+            field="isBanned"
+            (orderTable)="sortUsers($event)">
+          {{ 'user.status' | translate }}
+        </th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let user of users; let i = index">
+        <td>{{ user?.firstName }}</td>
+        <td>{{ user?.lastName }}</td>
+        <td>{{ user?.email }}</td>
+        <td>{{ 'user.roleList.' + user?.role | translate }}</td>
+        <td>
+          <i class="icon"
+             [ngClass]="'t-' + getStatus(user)">fiber_manual_record</i>
+        </td>
+
+        <td class="action">
+          <button (click)="banUser(user)"
+                  [disabled]="user.id === session?.user?.id"
+                  class="clickable t-dark">
+            <i class="icon">
+              {{ user.isBanned === 0 ? 'remove_circle' : 'check' }}
+            </i>
+          </button>
+
+          <button (click)="confirmDeleteUser(user, i)"
+                  [disabled]="user.id === session?.user?.id"
+                  class="clickable t-dark">
+            <i class="icon">delete</i>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </app-table>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  overflow: hidden;
+  z-index: 2000;
+  background: none;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20%;
+    height: 100%;
+    animation: loader 1.5s ease-in-out infinite alternate;
+    @include themify {
+      background: $primary;
+    }
+
+    .mobile & {
+      background: transparentize(color(light), 0.5);
+    }
+  }
+}
+
+%miniloader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  &:before,
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    animation: rotate 0.75s infinite linear;
+    @include themify {
+      border-top-color: $primary;
+    }
+  }
+
+  &:after {
+    content: "";
+    left: 50%;
+    top: 50%;
+    margin: -8px 0 0 -8px;
+    animation: rotate 1.5s infinite linear;
+  }
+}
+
+.noresult {
+  color: transparent;
+  font-style: italic;
+  display: none;
+
+  body:not(.loading) &:only-child,
+  &.gotdata:only-child {
+    color: color("dark-medium");
+    display: block;
+  }
+
+  body.loading &:only-child:not(.gotdata):not(.noloader) {
+    height: 1em * $line-height;
+    width: 1em * $line-height;
+    @extend %miniloader;
+  }
+}
+
+body.loading .miniloader:only-child {
+  @extend .cover;
+  @extend %miniloader;
+}

@@ -1,0 +1,35 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "admin@ptc.com",
+      "password": "1234",
+      "firstName": "John",
+      "lastName": "Doe",
+      "token": "dummy-token-1",
+      "role": 7,
+      "isBanned": 0
+    },
+    {
+      "id": 2,
+      "email": "test@ptc.com",
+      "password": "4321",
+      "firstName": "Davy",
+      "lastName": "Jansen",
+      "token": "dummy-token-2",
+      "role": 2,
+      "isBanned": 0
+    },
+    {
+      "id": 3,
+      "email": "dev@ptc.com",
+      "password": "2244",
+      "firstName": "Michael",
+      "lastName": "Smith",
+      "token": "dummy-token-3",
+      "role": 2,
+      "isBanned": 0
+    }
+  ],
+  "ping": []
+}

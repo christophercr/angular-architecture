@@ -1,0 +1,10 @@
+<span *ngIf="label && !['checkbox'].includes(type)"
+      class="t-label">
+  <i *ngIf="icon"
+     class="icon">
+    {{ icon }}
+  </i>
+
+  {{ label | translate }}
+  {{ (required && !disabled) ? '*' : '' }}
+</span>

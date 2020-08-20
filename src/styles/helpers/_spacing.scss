@@ -1,0 +1,70 @@
+$amounts: (
+  none: 0,
+  eighth: $spacing/8,
+  quarter: $spacing / 4,
+  half: $spacing / 2,
+  pacman: $spacing * 0.75,
+  normal: $spacing,
+  sesqui: $spacing * 1.5,
+  double: $spacing * 2
+);
+
+$directions: (all, y, x, top, bottom, left, right);
+
+.m-auto {
+  margin: auto;
+}
+
+@function get-name($name, $type) {
+  @if $name == all or $name == normal {
+    @return "";
+  } @else {
+    @if $type == "direction" {
+      @return str-slice($name, 0, 1);
+    } @else {
+      @return "-" + $name;
+    }
+  }
+}
+
+@mixin spacing($property, $direction, $amount) {
+  @if $direction == y {
+    #{$property}-top: $amount;
+    #{$property}-bottom: $amount;
+  } @else if $direction == x {
+    #{$property}-left: $amount;
+    #{$property}-right: $amount;
+  } @else if $direction == all {
+    #{$property}: $amount;
+  } @else {
+    #{$property}-#{$direction}: $amount;
+  }
+}
+
+@each $direction in $directions {
+  @each $amountname, $amount in $amounts {
+    .m#{get-name($direction, "direction")}#{get-name($amountname, 'amount')} {
+      @include spacing(margin, $direction, $amount);
+    }
+    .p#{get-name($direction, "direction")}#{get-name($amountname, 'amount')} {
+      @include spacing(padding, $direction, $amount);
+    }
+  }
+}
+
+@each $direction in $directions {
+  @each $breakpointname, $breakpoint in $breakpoints {
+    @each $amountname, $amount in $amounts {
+      .m#{get-name($direction, "direction")}#{get-name($amountname, 'amount')}-#{$breakpointname} {
+        @media screen and (min-width: $breakpoint) {
+          @include spacing(margin, $direction, $amount);
+        }
+      }
+      .p#{get-name($direction, "direction")}#{get-name($amountname, 'amount')}-#{$breakpointname} {
+        @media screen and (min-width: $breakpoint) {
+          @include spacing(padding, $direction, $amount);
+        }
+      }
+    }
+  }
+}

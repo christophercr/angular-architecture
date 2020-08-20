@@ -1,0 +1,98 @@
+$resizer-position: 5px;
+$resizer-width: $spacing/2 + $resizer-position;
+$resizer-border-width: 3px;
+
+%resizer-border {
+  content: "";
+  display: block;
+  width: $resizer-border-width;
+  transition: $transition;
+
+  .app:not(.mobile) .resizer:hover & {
+    @include themify {
+      background-color: $primary;
+    }
+  }
+}
+
+.resizer {
+  position: absolute;
+  height: 100%;
+  width: $resizer-width;
+  right: -$resizer-width + $resizer-position;
+  top: 0;
+  cursor: col-resize;
+  z-index: 100;
+
+  &.disabled {
+    pointer-events: none;
+  }
+
+  &_handle {
+    width: 100%;
+    height: 100%;
+    padding-left: $resizer-position;
+
+    &:before {
+      @extend %resizer-border;
+      height: 100%;
+    }
+  }
+
+  &_collapse {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: $resizer-width;
+    padding: $spacing/2 0 $spacing/2 $resizer-width/1.5 + $resizer-border-width;
+    cursor: pointer;
+
+    .mobile & {
+      display: none;
+    }
+
+    &:before,
+    &:after {
+      @extend %resizer-border;
+      height: 9px;
+      -webkit-backface-visibility: hidden;
+    }
+
+    &:before {
+      border-top-left-radius: $radius;
+      border-top-right-radius: $radius;
+    }
+
+    &:after {
+      border-bottom-left-radius: $radius;
+      border-bottom-right-radius: $radius;
+    }
+
+    &:hover {
+      &:before,
+      &:after {
+        border-radius: $radius;
+      }
+
+      &:before {
+        transform: rotate(45deg) translate(1px, 2.5px);
+      }
+
+      &:after {
+        transform: rotate(-45deg) translate(1px, -2.5px);
+      }
+
+      .closed &,
+      .mobileclosed & {
+        &:before {
+          transform: rotate(-45deg) translate(-1px, 2.5px);
+        }
+
+        &:after {
+          transform: rotate(45deg) translate(-1px, -2.5px);
+        }
+      }
+    }
+  }
+}

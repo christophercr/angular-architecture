@@ -1,0 +1,26 @@
+.menu {
+  z-index: 50;
+  position: relative;
+
+  &.ontop {
+    z-index: 180;
+  }
+
+  &_blanket {
+    position: fixed;
+    z-index: 50;
+    background: color("dark-light");
+    transition: opacity $easing $time;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .picture {
+    object-fit: cover;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+  }
+}

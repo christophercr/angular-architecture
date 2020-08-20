@@ -1,0 +1,129 @@
+%burger-slice {
+  width: $burger-width;
+  height: 3px;
+  border-radius: 2px;
+  position: absolute;
+  transition-property: transform;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+  background: color("light");
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 40;
+  height: $header-height;
+  display: none;
+  transition: box-shadow $easing $time;
+  @include themify {
+    background: $primary;
+  }
+
+  .mobile & {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &_title {
+    transition: opacity $easing $time;
+  }
+}
+
+.headerbtn {
+  cursor: pointer;
+  height: $header-height;
+  width: $burger-btn-width;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: -$burger-btn-width;
+  z-index: 150;
+  color: color("light");
+  transition: color $easing $time, opacity $easing $time;
+
+  &.left {
+    right: -$burger-btn-width;
+    left: auto;
+  }
+
+  &.active .hide-active {
+    @extend .ghost;
+  }
+
+  &:not(.active) .hide-active {
+    transition: opacity $easing $time;
+  }
+
+  .mobile & {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.burger {
+  transition-property: opacity;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+
+  &_box {
+    width: 20px;
+    height: $burger-height + 1px;
+    position: relative;
+
+    .burger:not(.active) &.hide-inactive {
+      @extend .ghost;
+    }
+  }
+
+  &_inner {
+    display: block;
+    margin-top: -2px;
+    top: 2px;
+    transition-duration: 0.275s;
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    @extend %burger-slice;
+
+    .active & {
+      transform: translate3d(0, 6px, 0) rotate(135deg);
+      transition-delay: 0.075s;
+    }
+
+    &:before,
+    &:after {
+      content: "";
+      display: block;
+      @extend %burger-slice;
+    }
+
+    &:before {
+      top: 6px;
+      transition: opacity 0.125s 0.275s ease;
+
+      .active & {
+        transition-delay: 0s;
+        opacity: 0;
+      }
+
+      .hide-inactive & {
+        content: none;
+      }
+    }
+
+    &:after {
+      top: 12px;
+      transition: transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+      .active & {
+        transform: translate3d(0, -12px, 0) rotate(-270deg);
+        transition-delay: 0.075s;
+      }
+    }
+  }
+}

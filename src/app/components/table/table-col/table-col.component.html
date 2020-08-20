@@ -1,0 +1,10 @@
+<span (click)="order()"
+      [class.clickable]='sortable'
+      [class.t-primary]="getOrderDirection(field)">
+
+  <ng-content></ng-content>
+
+  <i class="icon">
+    {{ getOrderDirection(field) === orderDirection.DESC ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
+  </i>
+</span>

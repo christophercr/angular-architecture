@@ -1,0 +1,112 @@
+$font: Arial, sans-serif;
+$line-height: 1.4286;
+$spacing: 24px;
+$radius: 2px;
+$tile-size: 36px;
+$small-tile: $tile-size * 2/3;
+$mini-tile: 20px;
+$disabled-opacity: 0.6;
+$disabled-percent: 60%;
+$header-height: 40px;
+$burger-width: 20px;
+$burger-height: 15px;
+$burger-btn-width: $header-height + $burger-width - $burger-height;
+$dropdown-maxwidth: 180px;
+$infobar-width: 320px - $burger-btn-width;
+$time: 0.3s;
+$easing: cubic-bezier(0.215, 0.61, 0.355, 1);
+$transition: all $time $easing;
+$colors: (
+  "dark": rgba(#000, 0.87),
+  "dark-medium": rgba(#000, 0.6),
+  "dark-light": rgba(#000, 0.38),
+  "dark-lightest": rgba(#000, 0.15),
+  "grey": #ededed,
+  "grey-opaque": rgba(#000, 0.07),
+  "grey-light": rgba(63, 63, 62, 0.1),
+  "light": #fff,
+  "light-opaque": rgba(#fff, 0.87),
+  "transparent": transparent,
+  "success": #50b748,
+  "warning": #f7be11,
+  "error": #e01041
+);
+$sizes: (
+  xs: 1.1,
+  sm: 1.2,
+  rg: 1.4,
+  md: 1.6,
+  lg: 1.8,
+  xl: 2,
+  xxl: 2.4,
+  xxxl: 2.8
+);
+$breakpoints: (
+  sm: 460px,
+  md: 800px,
+  lg: 1120px,
+  xl: 1350px,
+  xxl: 1770px
+);
+@import "styles/mixins";
+$btn-types: (
+  primary: (
+    default: (
+      color: color("light"),
+      bg: theme-color(primary),
+      hoverbg: rgba(theme-color(primary-rgb), 0.9)
+    ),
+    bare: (
+      color: theme-color(primary),
+      bg: transparent,
+      hoverbg: rgba(theme-color(primary-rgb), 0.15)
+    )
+  ),
+  secondary: (
+    default: (
+      color: color("dark"),
+      bg: color("grey-opaque"),
+      hoverbg: rgba(#000, 0.15)
+    ),
+    bare: (
+      color: color(dark-medium),
+      bg: transparent,
+      hoverbg: rgba(#000, 0.15)
+    ),
+    clear: (
+      color: color("dark"),
+      bg: color("light"),
+      hoverbg: color("light")
+    )
+  )
+);
+$btn-default-type: (
+  default: (
+    color: color("light"),
+    bg: default-color(primary),
+    hoverbg: rgba(default-color(primary), 0.9)
+  ),
+  bare: (
+    color: default-color(primary),
+    bg: transparent,
+    hoverbg: rgba(default-color(primary), 0.15)
+  )
+);
+$btn-input-type: (
+  default: (
+    color: color("dark"),
+    bg: color("grey"),
+    hoverbg: darken(color("grey"), 15%)
+  )
+);
+$border-width: 2px;
+$border-color: color("grey-opaque");
+$border: $border-width solid $border-color;
+$shadow: 0 0 3px color("dark-light");
+$base-text-height: $line-height * rem(size(rg));
+$box-vertical-spacing: (
+    ($tile-size - px(size(rg)) * $line-height) - ($border-width * 2)
+  )/2;
+$box-small-vertical-spacing: (
+    ($small-tile - px(size(sm)) * $line-height) - ($border-width * 2)
+  )/2;

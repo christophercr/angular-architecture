@@ -1,0 +1,20 @@
+<div class="border-top mx-half mx-sm">
+  <div class="row row-guttered-quarter py-half end">
+    <section *ngIf="secondaryButton && !secondaryButton?.hide"
+             class="col-12 col-none-sm px-quarter mb-quarter mb-none-sm">
+      <button (click)="secondaryButton?.action()"
+              class="btn secondary bare col-12 waiter">
+        {{ secondaryButton?.name | translate }}
+      </button>
+    </section>
+
+    <section *ngIf="primaryButton"
+             class="col-12 col-none-sm px-quarter">
+      <button (click)="primaryAction()"
+              [disabled]="primaryButton?.disabled"
+              class="btn col-12 waiter">
+        {{ primaryButton?.name | translate }}
+      </button>
+    </section>
+  </div>
+</div>

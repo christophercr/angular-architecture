@@ -1,0 +1,99 @@
+<div class="row">
+  <div class="t-center p col-12 col-6-sm">
+    <h2>Switch language</h2>
+
+    <app-switch-language></app-switch-language>
+  </div>
+
+  <div class="t-center p col-12 col-6-sm">
+    <h2>Connection with backend</h2>
+
+    <button class="btn m"
+            (click)="ping()">
+      Ping
+    </button>
+  </div>
+
+  <div class="t-center p col-12 col-6-sm">
+    <h2>Show toast</h2>
+
+    <ng-container *ngFor="let type of ['info', 'success', 'warning', 'error']">
+      <button class="btn m"
+              (click)="toast[type]('Toast ' + type)">
+        Toast {{ type }}
+        <i class="icon"
+           [ngClass]="'t-' + type">fiber_manual_record</i>
+      </button>
+    </ng-container>
+  </div>
+
+  <div class="t-center p col-12 col-6-sm">
+    <h2>Open modal</h2>
+
+    <button class="btn m"
+            (click)="openModal()">
+      Modal text
+    </button>
+
+    <button class="btn m"
+            (click)="openModal(true)">
+      Modal component
+    </button>
+  </div>
+
+  <div class="p col-12">
+    <hr/>
+    <h2 class="t-center">Features</h2>
+
+    <div class="t-left">
+      <h3 class="t-bold">Pages:</h3>
+      <ul class="list-bullet mb ml">
+        <li>Login</li>
+        <li>Register</li>
+        <li>Confirm account</li>
+        <li>Forgot password</li>
+        <li>Edit profile, password, picture</li>
+        <li>List all users (see user informations, delete user)</li>
+        <li>404 Not found</li>
+        <li>503 Unavailable</li>
+      </ul>
+
+      <h3 class="t-bold">Services, pipes, guards:</h3>
+      <ul class="list-bullet mb ml">
+        <li> Api (GET, POST, PATCH, DELETE request json or formData)</li>
+        <li>Toast (info, success, warning, error toast with translation)</li>
+        <li>Errors handler (catch errors from backend and show alert with/without redirection/logout)</li>
+        <li>Session (current user)</li>
+        <li>Storage (local storage)</li>
+        <li>Translate (detect default language, keep selected language, pipe)</li>
+        <li>Events publisher</li>
+        <li>Pipe local date (handle language wording of dates)</li>
+        <li>Connected guard, admin guard</li>
+        <li>Modal (text or component, with action & cancel button)</li>
+      </ul>
+
+      <h3 class="t-bold">Components:</h3>
+      <ul class="list-bullet mb ml">
+        <li>Loader (loader singleton if many requests)</li>
+        <li>Spinner (with label if no result)</li>
+        <li>Input text with label, icon, required, disabled, pattern, min/max length, error messages (type: text, email,
+          password, textarea, checkbox)
+        </li>
+        <li>Input file with label, icon, required, disabled, extensions check, size check, error messages</li>
+        <li>❌ Select</li>
+        <li>Menu</li>
+      </ul>
+
+      <h3 class="t-bold">Divers:</h3>
+      <ul class="list-bullet mb ml">
+        <li>Lazy loading</li>
+        <li>Integration (grids, variables,…)</li>
+        <li>Handle differents environments (local, dev, staging, prod)</li>
+        <li>Alias for imports</li>
+        <li>Extract keys to translate in all files (ngx-translate-extract)</li>
+        <li>Check commit convention before commit (husky)</li>
+        <li>CI (Jira flow, deploy, env by feature, ❌ code quality,...)</li>
+      </ul>
+    </div>
+  </div>
+</div>

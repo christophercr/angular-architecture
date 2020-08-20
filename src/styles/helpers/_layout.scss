@@ -1,0 +1,131 @@
+.version {
+  position: fixed;
+  bottom: 8px;
+  left: 8px;
+  font-size: rem(size(xs));
+  z-index: 999;
+  line-height: 1;
+  color: color("light");
+}
+
+.cover {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.blanket {
+  &:after {
+    content: "";
+    @extend .cover;
+  }
+}
+
+.app {
+  &_main {
+    width: 100%;
+    transition: padding-left $easing $time, left $easing $time;
+
+    .mobile & {
+      padding-top: $header-height;
+    }
+  }
+}
+
+.scroll {
+  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  transform: translate3d(0, 0, 0);
+
+  &-cover {
+    height: auto;
+    @extend .cover;
+  }
+
+  &-horizontal {
+    overflow: auto;
+    overflow-y: hidden;
+    overflow-x: auto;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+    transform: translate3d(0, 0, 0);
+  }
+
+  &-hide {
+    overflow: hidden;
+  }
+}
+
+.waiter {
+  .loading & {
+    @extend .disabled;
+  }
+}
+
+.fill {
+  flex: 1;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.dragging {
+  user-select: none;
+  touch-action: none;
+
+  .draggable {
+    transition: none;
+    touch-action: none;
+  }
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.noclick {
+  cursor: auto;
+}
+
+.notransition {
+  transition: none;
+}
+
+.transition {
+  transition: $transition;
+}
+
+.block {
+  display: block;
+}
+
+.invisible {
+  opacity: 0;
+}
+
+.ghost {
+  position: absolute;
+  opacity: 0;
+  height: 1px !important;
+  width: 1px !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.relative {
+  position: relative;
+}
+
+.list {
+  &-bullet {
+    list-style: initial;
+  }
+}

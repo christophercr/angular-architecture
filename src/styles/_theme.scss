@@ -1,0 +1,18 @@
+:root {
+  --primary: #3e82c1;
+  --primary-rgb: 62, 130, 193;
+  --secondary: #373d3f;
+  --secondary-rgb: 55, 61, 63;
+}
+
+$theme-colors: (
+  primary: var(--primary),
+  primary-rgb: var(--primary-rgb),
+  secondary: var(--secondary),
+  secondary-rgb: var(--secondary-rgb)
+);
+
+$default-colors: (
+  primary: #3e82c1,
+  secondary: #373d3f
+);

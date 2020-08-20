@@ -1,0 +1,93 @@
+<div class="menu"
+     [class.ontop]="!sidebar.isClosed && sidebarService.mobileMode">
+
+  <div class="menu_blanket"
+       [class.ghost]="sidebar.width === 0 || !sidebarService.mobileMode"
+       (click)="toggle()">
+  </div>
+
+  <div class="sidebar flex draggable"
+       [ngClass]="{
+      'closed': sidebar.isClosed && !sidebarService.mobileMode,
+      'open': !sidebar.isClosed || sidebarService.mobileMode,
+      'mobileclosed':  sidebar.isClosed && sidebarService.mobileMode,
+      'notransition': sidebarService.noTransition
+    }"
+       [ngStyle]="
+      sidebarService.mobileMode
+      && sidebar.width < sidebarService.width.open
+      && {
+        transform: 'translateX(' + (sidebar.width - sidebarService.width.open) + 'px)'
+      }
+    ">
+
+    <span class="headerbtn left burger"
+          [ngClass]="{
+        'active': !sidebar.isClosed
+      }"
+          (click)="toggle()">
+      <span class="burger_box">
+        <span class="burger_inner"></span>
+      </span>
+    </span>
+
+    <div #sidebarRef
+         class="sidebar_main draggable scroll"
+         [ngStyle]="{
+        minWidth: (sidebarService.mobileMode ? sidebarService.width.open : sidebarService.width.closed) + 'px',
+        width: sidebar.width + 'px'
+      }">
+
+      <div class="col-12">
+        <div class="sidebar_profile center">
+          <img *ngIf="session.user.pictureUrl"
+               [src]="session.user.pictureUrl"
+               alt="avatar"
+               class="picture">
+
+          <p *ngIf="sidebarService.mobileMode || !sidebar?.isClosed"
+             class="t-ellipsis">
+            {{ session?.user?.firstName }} {{ session?.user?.lastName }}
+          </p>
+
+          <p *ngIf="!sidebarService.mobileMode && sidebar?.isClosed">
+            <ng-container *ngIf="session.user.firstName">{{ session.user.firstName.charAt(0) }}</ng-container>
+            <ng-container *ngIf="session.user.lastName">{{ session.user.lastName.charAt(0) }}</ng-container>
+          </p>
+        </div>
+
+        <ul class="sidebar_list"
+            *ngFor="let menuList of menuItems; let last = last">
+          <ng-container *ngIf="!last">
+            <li *ngFor="let item of menuList">
+              <app-menu-item *ngIf="!item.disabled"
+                             [item]="item">
+              </app-menu-item>
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+
+      <div class="col-12">
+        <ul class="sidebar_list">
+          <li *ngFor="let item of menuItems[menuItems.length-1]">
+            <app-menu-item *ngIf="!item.disabled"
+                           [item]="item">
+            </app-menu-item>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="resizer">
+      <div class="resizer_handle"
+           (mousedown)="startClickHandle($event)"
+           (touchstart)="startClickHandle($event)">
+      </div>
+      <button type="button"
+              class="resizer_collapse"
+              (click)="toggle()">
+      </button>
+    </div>
+  </div>
+</div>

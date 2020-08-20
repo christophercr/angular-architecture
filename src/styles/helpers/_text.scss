@@ -1,0 +1,165 @@
+.error {
+  display: block;
+  font-size: rem(size(sm));
+  color: color("red");
+  margin-top: 0.5em;
+}
+
+.link {
+  cursor: pointer;
+  text-decoration: underline;
+  color: inherit;
+
+  &:link,
+  &:visited {
+    text-decoration: underline;
+  }
+
+  &:hover,
+  &:active {
+    @include themify {
+      color: $primary;
+    }
+    text-decoration: none;
+  }
+
+  &.nodeco {
+    text-decoration: none;
+  }
+
+  &.nohover:hover,
+  &.nohover:active {
+    color: inherit;
+  }
+}
+
+.t {
+  &-fit {
+    line-height: 1;
+  }
+
+  &-zero {
+    font-size: 0px;
+  }
+
+  &-upper {
+    text-transform: uppercase;
+  }
+
+  &-capitalize {
+    text-transform: capitalize;
+  }
+
+  &-underline {
+    text-decoration: underline;
+  }
+
+  &-spaced {
+    letter-spacing: 0.2em;
+  }
+
+  &-left {
+    text-align: left;
+  }
+
+  &-right {
+    text-align: right;
+  }
+
+  &-center {
+    text-align: center;
+  }
+
+  &-regular {
+    font-weight: 400;
+  }
+
+  &-medium {
+    font-weight: 500;
+  }
+
+  &-bold {
+    font-weight: 600;
+  }
+
+  &-italic {
+    font-style: italic;
+  }
+
+  &-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  &_aligntbot {
+    vertical-align: text-bottom;
+  }
+
+  &-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* autoprefixer: ignore next */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &-nowrap {
+    white-space: nowrap;
+  }
+
+  &-preline {
+    white-space: pre-line;
+  }
+
+  &-label {
+    font-size: rem(size(rg));
+    margin-bottom: $spacing/4;
+    color: color("dark-medium");
+    display: block;
+    @extend .t-ellipsis;
+
+    &-small {
+      font-size: rem(size(sm));
+      font-weight: 400;
+      line-height: $line-height * rem(size(rg));
+    }
+  }
+
+  &-primary {
+    @include themify {
+      color: $primary;
+    }
+  }
+
+  &-secondary {
+    @include themify {
+      color: $secondary;
+    }
+  }
+
+  &-icon {
+    @extend %icon;
+    display: inline-block;
+    line-height: $line-height;
+    vertical-align: text-top;
+  }
+
+  @each $name, $color in $colors {
+    &-#{$name} {
+      color: $color;
+    }
+  }
+  @each $name, $size in $sizes {
+    &-#{$name} {
+      font-size: rem($size);
+    }
+  }
+  @each $name, $size in $sizes {
+    &-#{$name}-px {
+      font-size: px($size);
+    }
+  }
+}

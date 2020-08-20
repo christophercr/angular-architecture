@@ -1,0 +1,30 @@
+<form #form="ngForm"
+      (ngSubmit)="submit()"
+      novalidate
+      class="row">
+  <app-input type="text"
+             name="multi"
+             placeholder="users.search"
+             [minlength]="1"
+             [(model)]="searchText"
+             class="col-12 col-6-sm col-4-md col-3-lg col-2-xl px-quarter">
+  </app-input>
+
+  <div class="col-12 col-6-sm col-4-md col-3-lg col-2-xl px-quarter">
+    <button type="submit"
+            [disabled]="form.invalid"
+            class="btn input waiter col-12">
+      {{ 'actions.search' | translate }}
+      <i class="icon">search</i>
+    </button>
+  </div>
+
+  <div class="col-12 col-6-sm col-4-md col-3-lg col-2-xl px-quarter">
+    <button type="button"
+            (click)="reset()"
+            class="btn input secondary waiter col-12">
+      {{ 'actions.reset' | translate }}
+      <i class="icon">clear</i>
+    </button>
+  </div>
+</form>

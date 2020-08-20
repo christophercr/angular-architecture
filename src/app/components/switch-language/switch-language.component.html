@@ -1,0 +1,9 @@
+<div class="switch t-center m">
+  <ng-container *ngFor="let language of translate.getLangs().sort()">
+    <button (click)="switchLanguage(language)"
+            [class.secondary]="translate.currentLang !== language"
+            class="btn">
+      {{ language | uppercase }}
+    </button>
+  </ng-container>
+</div>

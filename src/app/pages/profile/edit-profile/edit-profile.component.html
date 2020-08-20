@@ -1,0 +1,72 @@
+<div class="row center p">
+  <h1 class="mb col-12">{{ 'profile.edition' | translate }}</h1>
+
+  <form #form="ngForm"
+        (ngSubmit)="submit(form)"
+        [mustMatch]="['password', 'confirmPassword']"
+        novalidate
+        class="t-left col-12 col-6-sm col-4-md col-3-lg col-2-xl">
+
+    <app-input type="text"
+               name="firstName"
+               label="user.firstName"
+               placeholder="user.firstName"
+               icon="person_pin"
+               regex="name"
+               [required]="true"
+               [(model)]="user.firstName">
+    </app-input>
+
+    <app-input type="text"
+               name="lastName"
+               label="user.lastName"
+               placeholder="user.lastName"
+               icon="person_pin"
+               regex="name"
+               [required]="true"
+               [(model)]="user.lastName">
+    </app-input>
+
+    <app-input type="email"
+               name="email"
+               label="user.email"
+               placeholder="user.email"
+               icon="email"
+               [required]="true"
+               regex="email"
+               [(model)]="user.email">
+    </app-input>
+
+    <app-input-file name="picture"
+                    label="user.picture"
+                    icon="portrait"
+                    [tip]="true"
+                    [types]="['image']"
+                    [(model)]="user.picture">
+    </app-input-file>
+
+    <app-input type="password"
+               name="password"
+               label="user.newPassword"
+               placeholder="user.newPassword"
+               icon="vpn_key"
+               regex="password"
+               [autocomplete]="false"
+               [(model)]="user.password">
+    </app-input>
+
+    <app-input type="password"
+               name="confirmPassword"
+               label="user.confirmNewPassword"
+               placeholder="user.newPassword"
+               icon="vpn_key"
+               regex="password">
+    </app-input>
+
+    <button class="btn col-12 waiter"
+            type="submit"
+            [disabled]="form.invalid">
+      {{ 'actions.edit' | translate }}
+    </button>
+  </form>
+</div>

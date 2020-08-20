@@ -1,0 +1,70 @@
+.toast-container {
+  & > .ngx-toastr {
+    padding: $spacing * 0.75 $spacing * 0.75 $spacing * 0.75 $spacing * 2;
+    box-shadow: 0 0 4px color("dark-light");
+    background-image: none;
+    border-radius: $radius;
+    max-width: 280px;
+    animation: slideInRight 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    &:hover {
+      box-shadow: 0 0 4px color("dark-light");
+    }
+
+    &:before {
+      position: absolute;
+      top: 50%;
+      left: $spacing * 0.75;
+      transform: translateY(-50%);
+      font-size: px(size(xl));
+      @extend %icon;
+    }
+  }
+
+  .toast {
+    &-title {
+      display: none;
+    }
+
+    &-success {
+      background-color: color("success");
+
+      &:hover {
+        background-color: darken(color("success"), 1%);
+      }
+
+      &:before {
+        content: "check";
+      }
+    }
+
+    &-error {
+      background-color: color("error");
+
+      &:hover {
+        background-color: darken(color("error"), 1%);
+      }
+
+      &:before {
+        content: "close";
+      }
+    }
+
+    &-warning {
+      background-color: color("warning");
+
+      &:hover {
+        background-color: darken(color("warning"), 1%);
+      }
+
+      &:before {
+        content: "error_outline";
+      }
+    }
+
+    &-progress {
+      background-color: color("light");
+      opacity: 0.6;
+    }
+  }
+}

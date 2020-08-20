@@ -1,0 +1,169 @@
+table {
+  width: 100%;
+  border-spacing: 0px;
+  color: color("dark");
+}
+
+th,
+td {
+  min-height: $tile-size;
+  text-align: left;
+  padding: $spacing/3 $spacing/2;
+  min-width: 70px;
+  position: relative;
+
+  &.shrink,
+  &.action {
+    min-width: 0;
+    width: 1px;
+    white-space: nowrap;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .clear & {
+    min-width: 43px;
+    border-right: $border-width solid color("grey");
+  }
+
+  .clear tr:not(:last-child) &:not(.noborder),
+  .clear thead & {
+    border-bottom: $border-width solid color("grey");
+  }
+
+  &.fixed {
+    position: sticky;
+    left: 0;
+    min-width: 180px;
+    max-width: 180px;
+    background: color("light");
+    z-index: 1;
+
+    &:not(.second) {
+      border-right: none;
+    }
+
+    &.second {
+      left: 180px;
+      min-width: 80px;
+      white-space: nowrap;
+    }
+
+    .mobile & {
+      position: static;
+    }
+  }
+
+  &.grow {
+    min-width: 200px;
+  }
+
+  &.autowidth {
+    min-width: 0;
+  }
+
+  &.action {
+    position: relative;
+    width: $tile-size;
+    min-width: $tile-size;
+    padding-left: 0;
+    padding-right: 0;
+
+    .btn {
+      border-radius: 0;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  .cellcover {
+    background: none;
+    outline: none;
+    border: none;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    top: 0;
+    left: 0;
+    border-radius: 0;
+    transition: color $easing $time, background $easing $time;
+    line-height: $tile-size;
+    text-transform: uppercase;
+
+    &:hover,
+    &:focus {
+      color: color("light");
+      @include themify {
+        background: $primary;
+      }
+    }
+  }
+}
+
+th {
+  color: color("dark-medium");
+  white-space: nowrap;
+  min-width: 0;
+
+  &.orderable {
+    cursor: pointer;
+
+    &:after {
+      @extend %icon;
+      content: "arrow_drop_down";
+      font-size: px(size(lg));
+    }
+  }
+
+  &.ascending:after {
+    content: "arrow_drop_up";
+  }
+
+  &.ordered {
+    @include themify {
+      color: $primary;
+    }
+  }
+
+  &.noarrow {
+    &:after {
+      content: "";
+    }
+  }
+}
+
+tr {
+  width: 100%;
+  min-width: 100%;
+}
+
+table:not(.clear) {
+  tr:nth-child(odd) {
+    background: color("grey");
+
+    &.clickable:hover {
+      background: darken(color("grey"), 2%);
+    }
+  }
+
+  tr.clickable:hover {
+    background: darken(color("light"), 2%);
+  }
+
+  thead tr:nth-child(odd) {
+    background: transparent;
+  }
+}
+
+img.pictureTable {
+  object-fit: cover;
+  height: $tile-size * 0.8;
+  width: $tile-size * 0.8;
+  border-radius: 50%;
+}

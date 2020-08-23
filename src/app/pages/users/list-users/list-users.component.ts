@@ -36,12 +36,6 @@ export class ListUsersComponent {
     );
   }
 
-  sortUsers(order: string[]) {
-    this.search.resetPagination();
-    this.search.params.order = order;
-    this.loadUsers(this.search.params);
-  }
-
   banUser(user: User): void {
     const isBanned = user.isBanned ? 0 : 1;
 

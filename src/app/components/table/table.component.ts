@@ -1,10 +1,25 @@
-import {Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges} from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnDestroy,
+  Output,
+  SimpleChanges
+} from '@angular/core';
+import {Subscription} from 'rxjs';
 
 // services
 import {Search} from '@services/search.service';
 
 // models
 import {CollectionParams} from '@models/api/collection-params';
+
+// components
+import {TableColComponent} from '@components/table/table-col/table-col.component';
 
 // config
 import {LINES_HEIGHT} from '@models/lines-height-config';
@@ -13,7 +28,7 @@ import {LINES_HEIGHT} from '@models/lines-height-config';
   selector: 'app-table',
   templateUrl: './table.component.html',
 })
-export class TableComponent implements OnChanges, OnDestroy {
+export class TableComponent implements OnChanges, OnDestroy, AfterContentInit {
   @Output() load: EventEmitter<CollectionParams> = new EventEmitter(); // function to load items
   @Input() items: any[]; // items of table
   @Input() lineHeight = 'medium'; // size of a line to calculate number of items to load on init
@@ -21,9 +36,19 @@ export class TableComponent implements OnChanges, OnDestroy {
   @Input() scrollContainerSelector = '.scrollContainer'; // scroll listener
   @Input() scrollDisabled = false;
 
+  // passing 'descendants' option because the TableColComponent(s) are not direct children in the content
+  @ContentChildren(TableColComponent, {descendants: true}) columnComponents: TableColComponent[];
+
+  private colSubscriptions: Subscription[] = [];
+
   constructor(
     private search: Search
   ) {
+  }
+
+  ngAfterContentInit() {
+    console.log('---- columns', this.columnComponents);
+    this.listenToColumnEvents();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -36,6 +61,24 @@ export class TableComponent implements OnChanges, OnDestroy {
     if (changes.items) {
       this.search.saveParams();
     }
+  }
+
+  ngOnDestroy(): void {
+    this.search.reset();
+    for (const subscription of this.colSubscriptions) {
+      subscription.unsubscribe();
+    }
+  }
+
+  private listenToColumnEvents(): void {
+    this.columnComponents.forEach((column) => {
+      const subscription = column.orderTable.subscribe((order: string[]) => {
+        this.search.resetPagination();
+        this.search.params.order = order;
+        this.load.emit(this.search.params);
+      });
+      this.colSubscriptions.push(subscription);
+    });
   }
 
   private init(viewHeight: number): void {
@@ -58,9 +101,5 @@ export class TableComponent implements OnChanges, OnDestroy {
   loadMore(): void {
     this.search.params.page++;
     this.load.emit(this.search.params);
-  }
-
-  ngOnDestroy(): void {
-    this.search.reset();
   }
 }

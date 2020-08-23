@@ -16,15 +16,15 @@ registerLocaleData(localeNl);
 
 // modules
 import {AppRoutingModule} from '@app/app-routing.module';
-import {SharedModule} from '@app/shared.module';
-import {ComponentsModule} from '@components/components.module';
+import {CoreModule} from '@core/core.module';
+import {SharedModule} from '@shared/shared.module';
 
 // services
-import {Interceptor} from '@services/interceptor.service';
+import {Interceptor} from '@shared/loader/interceptors/interceptor.service';
 
 // components
 import {AppComponent} from '@app/app.component';
-import {NotFoundComponent} from '@pages/not-found/not-found.component';
+import {NotFoundComponent} from '@app/not-found.component';
 
 @NgModule({
   declarations: [
@@ -35,8 +35,8 @@ import {NotFoundComponent} from '@pages/not-found/not-found.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    CoreModule,
     SharedModule,
-    ComponentsModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       progressBar: true

@@ -23,16 +23,12 @@
       "@app/*": ["src/app/*"],
       "@environment": ["src/environments/environment"],
       "@assets/*": ["src/assets/*"],
-      "@components/*": ["src/app/components/*"],
+      "@auth/*": ["src/app/auth/*"],
       "@config/*": ["src/app/config/*"],
-      "@guards/*": ["src/app/guards/*"],
-      "@helpers/*": ["src/app/helpers/*"],
-      "@models/*": ["src/app/models/*"],
-      "@pages/*": ["src/app/pages/*"],
-      "@pipes/*": ["src/app/pipes/*"],
-      "@directives/*": ["src/app/directives/*"],
-      "@services/*": ["src/app/services/*"],
-      "@api/*": ["src/app/services/api/*"]
+      "@core/*": ["src/app/core/*"],
+      "@home/*": ["src/app/home/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@users/*": ["src/app/users/*"]
     }
   },
   "angularCompilerOptions": {

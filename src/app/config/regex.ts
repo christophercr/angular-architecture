@@ -1,4 +1,4 @@
-import {RegexConfig} from '@models/regex-config';
+import {RegexConfig} from '@shared/input/entities/regex-config';
 
 export const REGEX: RegexConfig = {
   email: new RegExp('^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-\\+]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$'),

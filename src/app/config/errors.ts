@@ -1,4 +1,4 @@
-import {ErrorHandling, ErrorsConfig} from '@models/errors-config';
+import {ErrorHandling, ErrorsConfig} from '@core/api/entities/errors-config';
 
 export const ERRORS: ErrorsConfig = {
   DEFAULT_ERROR: {

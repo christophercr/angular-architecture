@@ -2,37 +2,31 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
 // guards
-import {AdminGuard} from '@guards/admin.guard';
-import {ConnectedGuard} from '@guards/connected.guard';
-import {NotConnectedGuard} from '@guards/not-connected.guard';
+import {AdminGuard} from '@core/session/guards/admin.guard';
+import {ConnectedGuard} from '@core/session/guards/connected.guard';
+import {NotConnectedGuard} from '@core/session/guards/not-connected.guard';
 
 // components
-import {NotFoundComponent} from '@pages/not-found/not-found.component';
+import {NotFoundComponent} from '@app/not-found.component';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./pages/home/home.module').then((m) => m.HomeModule),
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
     canActivate: [ConnectedGuard],
     canActivateChild: [ConnectedGuard]
   },
   {
     path: 'auth',
-    loadChildren: () => import('./pages/auth/auth.module').then((m) => m.AuthModule),
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
     canActivate: [NotConnectedGuard],
     canActivateChild: [NotConnectedGuard]
   },
   {
-    path: 'profile',
-    loadChildren: () => import('./pages/profile/profile.module').then((m) => m.ProfileModule),
-    canActivate: [ConnectedGuard],
-    canActivateChild: [ConnectedGuard]
-  },
-  {
     path: 'users',
-    loadChildren: () => import('./pages/users/users.module').then((m) => m.UsersModule),
-    canActivate: [AdminGuard],
-    canActivateChild: [AdminGuard]
+    loadChildren: () => import('./users/users.module').then((m) => m.UsersModule),
+    canActivate: [ConnectedGuard, AdminGuard],
+    canActivateChild: [ConnectedGuard, AdminGuard]
   },
   {
     path: '**',

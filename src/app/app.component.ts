@@ -5,11 +5,11 @@ import {environment} from '@environment';
 import {version} from '../../package.json';
 
 // services
-import {UserApi} from '@services/api/user.service';
-import {ErrorsHandler} from '@services/errors-handler.service';
-import {Session} from '@services/session.service';
-import {Sidebar} from '@services/sidebar.service';
-import {Translate} from '@services/translate.service';
+import {ErrorsHandler} from '@core/api/services/errors-handler.service';
+import {Translate} from '@core/i18n/services/translate.service';
+import {Session} from '@core/session/services/session.service';
+import {Sidebar} from '@shared/menu/services/sidebar.service';
+import {UserApi} from '@users/services/user.service';
 
 @Component({
   selector: 'app-root',

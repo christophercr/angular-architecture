@@ -6,9 +6,9 @@ import {TranslateModule} from '@ngx-translate/core';
 
 // modules
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
+import {FormModule} from 'ui-shared';
 
 // directives
-import {MustMatchDirective} from '@shared/form/directives/must-match.directive';
 import {ModalHostDirective} from '@shared/modal/directives/modal-host.directive';
 
 // components
@@ -26,6 +26,7 @@ import {TableComponent} from '@shared/table/components/table.component';
 
 const modules = [
   CommonModule,
+  FormModule,
   FormsModule,
   RouterModule,
   InfiniteScrollModule,
@@ -33,7 +34,6 @@ const modules = [
 ];
 
 const directives = [
-  MustMatchDirective,
   ModalHostDirective,
 ];
 

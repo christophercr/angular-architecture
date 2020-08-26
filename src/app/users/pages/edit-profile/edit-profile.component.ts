@@ -9,7 +9,7 @@ import {Toast} from '@shared/toast/services/toast.service';
 import {UserApi} from '@users/services/user.service';
 
 // helpers
-import {filterForm} from '@shared/form/helpers/form.helpers';
+import {filterForm} from 'ui-shared';
 
 // models
 import {User} from '@users/entities/user';

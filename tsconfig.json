@@ -20,15 +20,37 @@
     ],
     "resolveJsonModule": true,
     "paths": {
-      "@app/*": ["src/app/*"],
-      "@environment": ["src/environments/environment"],
-      "@assets/*": ["src/assets/*"],
-      "@auth/*": ["src/app/auth/*"],
-      "@config/*": ["src/app/config/*"],
-      "@core/*": ["src/app/core/*"],
-      "@home/*": ["src/app/home/*"],
-      "@shared/*": ["src/app/shared/*"],
-      "@users/*": ["src/app/users/*"]
+      "@app/*": [
+        "src/app/*"
+      ],
+      "@environment": [
+        "src/environments/environment"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@auth/*": [
+        "src/app/auth/*"
+      ],
+      "@config/*": [
+        "src/app/config/*"
+      ],
+      "@core/*": [
+        "src/app/core/*"
+      ],
+      "@home/*": [
+        "src/app/home/*"
+      ],
+      "@shared/*": [
+        "src/app/shared/*"
+      ],
+      "@users/*": [
+        "src/app/users/*"
+      ],
+      "ui-shared": [
+        "dist/ui-shared/ui-shared",
+        "dist/ui-shared"
+      ]
     }
   },
   "angularCompilerOptions": {

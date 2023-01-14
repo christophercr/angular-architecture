@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 .modal {
   z-index: 200;
   overflow: hidden;
@@ -12,7 +14,7 @@
   }
 
   &_heading {
-    margin-top: -$spacing/4;
+    margin-top: -(math.div($spacing, 4));
   }
 
   &_container {

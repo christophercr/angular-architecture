@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -11,21 +13,21 @@
 }
 
 .row-guttered-half {
-  margin-left: -#{$spacing/2};
-  margin-right: -#{$spacing/2};
+  margin-left: -#{math.div($spacing, 2)};
+  margin-right: -#{math.div($spacing, 2)};
   width: calc(100% + #{$spacing});
 }
 
 .row-guttered-quarter {
-  margin-left: -#{$spacing/4};
-  margin-right: -#{$spacing/4};
-  width: calc(100% + #{$spacing/2});
+  margin-left: -#{math.div($spacing, 4)};
+  margin-right: -#{math.div($spacing, 4)};
+  width: calc(100% + #{math.div($spacing, 2)});
 }
 
 .row-guttered-eighth {
-  margin-left: -#{$spacing/8};
-  margin-right: -#{$spacing/8};
-  width: calc(100% + #{$spacing/4});
+  margin-left: -#{math.div($spacing, 8)};
+  margin-right: -#{math.div($spacing, 8)};
+  width: calc(100% + #{math.div($spacing, 4)});
 }
 
 .hide {
@@ -89,8 +91,8 @@ $nbCols: 12;
 @for $i from 1 through $nbCols {
   .col-#{$i} {
     flex-grow: 1;
-    width: calc(#{100% * $i / $nbCols});
-    max-width: calc(#{100% * $i / $nbCols});
+    width: calc(#{math.div(100% * $i, $nbCols)});
+    max-width: calc(#{math.div(100% * $i, $nbCols)});
   }
 }
 
@@ -106,8 +108,8 @@ $nbCols: 12;
     @for $i from 1 through $nbCols {
       .col-#{$i}-#{$name} {
         flex-grow: 1;
-        width: calc(#{100% * $i / $nbCols});
-        max-width: calc(#{100% * $i / $nbCols});
+        width: calc(#{math.div(100% * $i, $nbCols)});
+        max-width: calc(#{math.div(100% * $i, $nbCols)});
       }
     }
     .hide-#{$name} {

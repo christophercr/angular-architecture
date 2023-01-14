@@ -1,5 +1,7 @@
+@use 'sass:math';
+
 $resizer-position: 5px;
-$resizer-width: $spacing/2 + $resizer-position;
+$resizer-width: math.div($spacing, 2) + $resizer-position;
 $resizer-border-width: 3px;
 
 %resizer-border {
@@ -45,7 +47,7 @@ $resizer-border-width: 3px;
     left: 0;
     transform: translateY(-50%);
     width: $resizer-width;
-    padding: $spacing/2 0 $spacing/2 $resizer-width/1.5 + $resizer-border-width;
+    padding: math.div($spacing, 2) 0 math.div($spacing, 2) math.div($resizer-width, 1.5) + $resizer-border-width;
     cursor: pointer;
 
     .mobile & {

@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 table {
   width: 100%;
   border-spacing: 0px;
@@ -8,7 +10,7 @@ th,
 td {
   min-height: $tile-size;
   text-align: left;
-  padding: $spacing/3 $spacing/2;
+  padding: math.div($spacing, 3) math.div($spacing, 2);
   min-width: 70px;
   position: relative;
 

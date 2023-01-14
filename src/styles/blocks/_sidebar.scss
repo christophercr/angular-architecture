@@ -1,8 +1,10 @@
+@use 'sass:math';
+
 $width-closed: 70px;
 $width-open: 210px;
 $dropdown-width: 230px;
 $link-height: 48px;
-$link-spacing: ($width-closed - $tile-size)/2;
+$link-spacing: math.div($width-closed - $tile-size, 2);
 
 .sidebar {
   max-width: 100%;
@@ -86,14 +88,14 @@ $link-spacing: ($width-closed - $tile-size)/2;
   }
 
   &_name {
-    margin-bottom: $spacing/6;
+    margin-bottom: math.div($spacing, 6);
     padding: 0 $spacing * 0.75;
     width: $width-open;
   }
 
   &_title {
     width: $width-open;
-    padding: 0 $spacing/4;
+    padding: 0 math.div($spacing, 4);
   }
 
   &_list {
@@ -179,7 +181,7 @@ $link-spacing: ($width-closed - $tile-size)/2;
     }
 
     .text {
-      padding-right: $spacing/2;
+      padding-right: math.div($spacing, 2);
       position: relative;
       display: block;
       flex: 1;

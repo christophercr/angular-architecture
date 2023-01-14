@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 
 // env
 import {environment} from '@environment';
-import {version} from '../../package.json';
+import packageInfo from '../../package.json';
 
 // services
 import {ErrorsHandler} from '@core/api/services/errors-handler.service';
@@ -32,7 +32,7 @@ export class AppComponent {
 
   displayEnv(): string {
     const envName = environment.name === 'Production' ? environment.appName : environment.name;
-    return `${envName} ${version}`;
+    return `${envName} ${packageInfo.version}`;
   }
 
   // refresh user in local storage

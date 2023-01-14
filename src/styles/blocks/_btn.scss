@@ -1,5 +1,7 @@
+@use 'sass:math';
+
 %btn-small {
-  padding: 0 $spacing/3;
+  padding: 0 math.div($spacing, 3);
   height: $small-tile;
   min-height: $small-tile;
   min-width: $small-tile;
@@ -16,7 +18,7 @@
   transition: $transition;
   cursor: pointer;
   text-align: center;
-  padding: $box-vertical-spacing $spacing/2;
+  padding: $box-vertical-spacing math.div($spacing, 2);
   height: $tile-size;
   min-height: $tile-size;
   min-width: $tile-size;

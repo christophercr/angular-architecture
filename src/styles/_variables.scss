@@ -1,9 +1,11 @@
+@use 'sass:math';
+
 $font: Arial, sans-serif;
 $line-height: 1.4286;
 $spacing: 24px;
 $radius: 2px;
 $tile-size: 36px;
-$small-tile: $tile-size * 2/3;
+$small-tile: math.div($tile-size * 2, 3);
 $mini-tile: 20px;
 $disabled-opacity: 0.6;
 $disabled-percent: 60%;
@@ -104,9 +106,5 @@ $border-color: color("grey-opaque");
 $border: $border-width solid $border-color;
 $shadow: 0 0 3px color("dark-light");
 $base-text-height: $line-height * rem(size(rg));
-$box-vertical-spacing: (
-    ($tile-size - px(size(rg)) * $line-height) - ($border-width * 2)
-  )/2;
-$box-small-vertical-spacing: (
-    ($small-tile - px(size(sm)) * $line-height) - ($border-width * 2)
-  )/2;
+$box-vertical-spacing: math.div(($tile-size - px(size(rg)) * $line-height) - ($border-width * 2), 2);
+$box-small-vertical-spacing: math.div(($small-tile - px(size(sm)) * $line-height) - ($border-width * 2), 2)

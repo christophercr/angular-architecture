@@ -1,8 +1,10 @@
+@use 'sass:math';
+
 $amounts: (
   none: 0,
-  eighth: $spacing/8,
-  quarter: $spacing / 4,
-  half: $spacing / 2,
+  eighth: math.div($spacing, 8),
+  quarter: math.div($spacing, 4),
+  half: math.div($spacing, 2),
   pacman: $spacing * 0.75,
   normal: $spacing,
   sesqui: $spacing * 1.5,

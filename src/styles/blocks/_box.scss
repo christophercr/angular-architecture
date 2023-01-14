@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 $icon-y-margin: -($box-vertical-spacing + $border-width);
 $icon-y-small-margin: -($box-small-vertical-spacing + $border-width);
 
@@ -6,14 +8,14 @@ $icon-y-small-margin: -($box-small-vertical-spacing + $border-width);
   border: $border;
   font-size: rem(size(rg));
   border-radius: $radius;
-  padding: $box-vertical-spacing $spacing/2;
+  padding: $box-vertical-spacing math.div($spacing, 2);
   display: flex;
   background: color("light");
   transition: background $easing $time;
 
   &-small {
     min-height: $small-tile;
-    padding: $box-small-vertical-spacing $spacing/3;
+    padding: $box-small-vertical-spacing math.div($spacing, 3);
   }
 
   &-mini {
@@ -43,11 +45,11 @@ $icon-y-small-margin: -($box-small-vertical-spacing + $border-width);
     margin: #{($icon-y-margin)} 0 #{($icon-y-margin)};
 
     &-before {
-      margin-left: #{- (($spacing/2) + $border-width)};
+      margin-left: #{- ((math.div($spacing, 2)) + $border-width)};
     }
 
     &-after {
-      margin-right: #{- (($spacing/2) + $border-width)};
+      margin-right: #{- ((math.div($spacing, 2)) + $border-width)};
     }
 
     &-small {
@@ -55,11 +57,11 @@ $icon-y-small-margin: -($box-small-vertical-spacing + $border-width);
       margin: #{($icon-y-small-margin)} 0 #{($icon-y-small-margin)};
 
       &-before {
-        margin-left: #{- (($spacing/3) + $border-width)};
+        margin-left: #{- ((math.div($spacing, 3)) + $border-width)};
       }
 
       &-after {
-        margin-right: #{- (($spacing/3) + $border-width)};
+        margin-right: #{- ((math.div($spacing, 3)) + $border-width)};
       }
     }
   }

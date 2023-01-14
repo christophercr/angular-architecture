@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 .error {
   display: block;
   font-size: rem(size(sm));
@@ -116,7 +118,7 @@
 
   &-label {
     font-size: rem(size(rg));
-    margin-bottom: $spacing/4;
+    margin-bottom: math.div($spacing, 4);
     color: color("dark-medium");
     display: block;
     @extend .t-ellipsis;

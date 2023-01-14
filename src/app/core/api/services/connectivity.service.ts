@@ -7,7 +7,7 @@ import {distinctUntilChanged} from 'rxjs/operators';
 })
 export class Connectivity {
   isOnline: boolean = true;
-  firstCallOffline: boolean = true; // flag to check the first request offline and dont show multi error message
+  firstCallOffline: boolean = true; // flag to check the first request offline and don't show multi error message
 
   constructor(
     private connectionService: ConnectionService,
@@ -20,11 +20,11 @@ export class Connectivity {
 
     this.connectionService.monitor()
       .pipe(distinctUntilChanged())
-      .subscribe((isOnline) => {
-        this.isOnline = isOnline;
+      .subscribe((connectionState) => {
+        this.isOnline = connectionState.hasNetworkConnection;
 
         // reset if online
-        if (isOnline) this.firstCallOffline = true;
+        if (connectionState.hasNetworkConnection) this.firstCallOffline = true;
       });
   }
 }

@@ -48,7 +48,7 @@ $breakpoints: (
   xl: 1350px,
   xxl: 1770px
 );
-@import "styles/mixins";
+@import "./mixins";
 $btn-types: (
   primary: (
     default: (

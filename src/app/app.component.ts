@@ -4,6 +4,9 @@ import {Component} from '@angular/core';
 import {environment} from '@environment';
 import packageInfo from '../../package.json';
 
+import {CoreModule} from '@core/core.module';
+import {SharedModule} from '@shared/shared.module';
+
 // services
 import {ErrorsHandler} from '@core/api/services/errors-handler.service';
 import {Translate} from '@core/i18n/services/translate.service';
@@ -13,7 +16,9 @@ import {UserApi} from '@users/services/user.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  standalone: true,
+  imports: [CoreModule, SharedModule]
 })
 export class AppComponent {
   appName: string = environment.appName;
